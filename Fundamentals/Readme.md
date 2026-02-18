@@ -15,5 +15,5 @@ As part of my AWS SysOps certification journey, I completed this 9-module networ
 *   **Accomplishment:** Built a dual-stack VPC environment with isolated private subnets.
 *   **Key Skill:** Set up route tables and linked them to the right subnets to control how traffic flows in the VPC. Used Security Groups to manage access at the instance level, and           Network ACLs to add an extra layer of control at the subnet level.
 
-![VPC Resource Map](path/to/your/resource-map-screenshot.png)
+![VPC Resource Map](./AWS_CloudOps_Journey/Images/Resource_Map.png)
 *Caption: Visualizing the isolated subnet architecture and routing paths.*
