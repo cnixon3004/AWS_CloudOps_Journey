@@ -23,7 +23,7 @@ I recently passed the AWS Certified AI Practioner & AWS Solutions Architect Asso
 
 | Domain | Focus Area | Progress |
 |--------|-------------|----------|
-| **Domain 0** | Review / Core Concepts (IAM, CLI, EC2, S3, Networking Basics) | ☐ |
+| [**Domain 0**](./Review/Fundamentals/) | Review / Core Concepts (IAM, CLI, EC2, S3, Networking Basics) |  🏗️ In Progress |
 | **Domain 1** | Monitoring, Logging, and Remediation | ☐ |
 | **Domain 2** | Reliability and Business Continuity | ☐ |
 | **Domain 3** | Deployment, Provisioning, and Automation | ☐ |
