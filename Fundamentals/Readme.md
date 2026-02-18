@@ -1,9 +1,9 @@
 # Project: Getting Hands-On with Amazon VPC (Nextwork.org) 
 
 ## 📌 Project Overview
-As part of my AWS SysOps certification journey, I completed this 9-module networking labset to master the foundational infrastructure required for secure and scalable cloud operations.
+Hands-on networking project built during my AWS SysOps (SOA-C03) certification studies — applying concepts from the Solutions Architect certification in real AWS environments.
 
-**Objective:** Build a fully functional Amazon VPC environment that includes both public and private subnets. Implement Network ACLs and Security Groups to tightly control inbound and outbound traffic. Enable VPC Flow Logs to monitor Layer 3 network activity for visibility and troubleshooting. Finally, configure VPC Endpoints to allow secure, private access to AWS services without exposing resources to the public internet.
+**Objective:** Build a fully functional Amazon VPC environment that includes both public and private subnets. Implement Network ACLs and Security Groups to define precise inbpund and outbound traffic rules. Enable VPC Flow Logs to monitor Layer 3 network activity for visibility and troubleshooting. Finally, configure VPC Endpoints to allow secure, private access to AWS services without exposing resources to the public internet.
 
 ## 🛠 AWS Services Used
 *   **VPC:** Custom subnets, Route Tables, and Internet Gateway (IGW).
@@ -17,4 +17,10 @@ As part of my AWS SysOps certification journey, I completed this 9-module networ
 
 ![VPC Resource Map](/Fundamentals/Images/Resource_Map.png)
  
-*Birds Eye View of entire network so far*
+*Bird's-eye View of the network architecture.*
+
+## 🎯 Next Steps
+- Implement NAT Gateways and private route configurations  
+- Explore VPC Endpoints and Gateway configurations  
+- Monitor traffic with CloudWatch and Flow Logs analytics
+
