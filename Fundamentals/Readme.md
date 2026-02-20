@@ -57,15 +57,17 @@ With NACL's,Subnets, and Route Tables created I moved on to testing connectivity
 After all test passed I then moved on to testing connectivity with the private instance (issued a Ping command) which failed
 ![Ping Failed](/Fundamentals/Images/privateping.png)<br>
 *Communication with Private Instance Failed.*
+
 I began to troubleshoot why I was unable to ping 
 -ACL's good (both allow all traffic)
 -SG for public is good (I tested it) 
 -Issue found in SG for private only 1 rule for SSH nothing else 
 I made the neccessary changes in the Private SG and began to test again
-![New Private Security Group]((/Fundamentals/Images/newprisg.png)
-*Edited Private Security Group*
+![New Private Security Group](/Fundamentals/Images/newprisg.png)
+*Edited Private Security Group*<br>
+
 Now the two public and private instances can communicate
-![Successfull Pings]((/Fundamentals/Images/Pub_Pri_success.png) 
+![Successfull Pings](/Fundamentals/Images/Pub_Pri_success.png) <br>
 *Success*
 
 
