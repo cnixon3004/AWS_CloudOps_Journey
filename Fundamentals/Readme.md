@@ -33,7 +33,8 @@ Hands-on networking project built during my AWS SysOps (SOA-C03) certification s
 ### 🔍 Key Takeaways
 With the networking foundation ready, I moved to the compute layer to validate my security boundaries.
 1. The Public "Front Door"
-I launched a t2.nano instance in the Public Subnet.
+I launched a two t2.nano instances one in the Public Subnet and the other in the Private Subnet.
 
 Purpose: Acts as a bastion host/entry point.
 Key Step: Attached a key pair for SSH and used Instance Connect for rapid access.
+          Made changes to the security group to only allow traffic that orginated from the Public SG-id. 
