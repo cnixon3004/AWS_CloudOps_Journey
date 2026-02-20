@@ -36,6 +36,7 @@ With the networking foundation ready, I moved to the compute layer to validate m
 I launched a two t2.nano instances one in the Public Subnet and the other in the Private Subnet.
 
 Purpose: Acts as a bastion host/entry point.
+
 Key Step: Attached a key pair for SSH and used Instance Connect for rapid access.
           Made changes to the security group to only allow traffic that orginated from the Public SG-id. 
 <p float="left">
