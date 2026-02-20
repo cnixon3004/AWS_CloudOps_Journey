@@ -41,8 +41,10 @@ Key Step: Attached a key pair for SSH and used Instance Connect for rapid access
 <p float="left">
   <img src="/Fundamentals/Images/privateinst.png" width="45%" />
   <img src="/Fundamentals/Images/pubinst.png" width="45%" />
-</p>
-*Side by side of view of both instance.*
+</p> 
+Side by side of view of both instance.
+
 
 ![Public SG chained to Private instance](/Fundamentals/Images/Prisg.png)
+*Security Group rules for the Private Instance.*
 
