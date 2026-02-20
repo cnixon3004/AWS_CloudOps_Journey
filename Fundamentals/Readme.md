@@ -49,3 +49,11 @@ Side by side of view of both instance.
 ![Public SG chained to Private instance](/Fundamentals/Images/Prisg.png)
 *Security Group rules for the Private Instance.*
 
+2. The Test
+With NACL's,Subnets, and Route Tables created I moved on to testing connectivity first with the public instance making sure that I can navigate to the outside internet.
+![Public Test](/Fundamentals/Images/pubtest)
+*Ping and -curl successfull
+
+After all test passed I then moved on to testing connectivity with the private instance (issued a Ping command) which failed
+![Ping Failed](/Fundamentals/Images/privateping.png)
+
