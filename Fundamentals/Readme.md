@@ -18,7 +18,7 @@ Hands-on networking project built during my AWS SysOps (SOA-C03) certification s
     - VPC Security
     - Create a Private Subnet
 *   ### 🔍 Key Takeaways
-*    Set up route tables and linked them to the right subnets to control how traffic flows in the VPC. Used Security Groups to manage access at the instance level, and           Network ACLs to add an extra layer of control        at the subnet level.
+*  I set up route tables and associated them with the appropriate subnets to define traffic flow. Security Groups handled access at the instance level, while Network ACLs added subnet-level control.
 
 ![VPC Resource Map](/Fundamentals/Images/Resource_Map.png)
  
@@ -31,14 +31,10 @@ Hands-on networking project built during my AWS SysOps (SOA-C03) certification s
 - Test VPC Connectivity
 
 ### 🔍 Key Takeaways
-With the networking foundation ready, I moved to the compute layer to validate my security boundaries.
-1. The Public "Front Door"
-I launched a two t2.nano instances one in the Public Subnet and the other in the Private Subnet.
+After setting up the network, I launched two t2.nano instances — one in the public subnet and one in the private subnet.
 
-Purpose: Acts as a bastion host/entry point.
-
-Key Step: Attached a key pair for SSH and used Instance Connect for rapid access.
-          Made changes to the security group to only allow traffic that orginated from the Public SG-id. 
+-The public instance acted as a bastion host, with SSH access controlled via key pair and Security Group rules.
+-The private instance was reachable only through traffic originating from the public instance’s Security Group (SG chaining).
 <p float="left">
   <img src="/Fundamentals/Images/privateinst.png" width="45%" />
   <img src="/Fundamentals/Images/pubinst.png" width="45%" />
@@ -49,26 +45,29 @@ Side by side of view of both instance.
 ![Public SG chained to Private instance](/Fundamentals/Images/Prisg.png)
 *Security Group rules for the Private Instance.*
 
-2. The Test
-With NACL's,Subnets, and Route Tables created I moved on to testing connectivity first with the public instance making sure that I can navigate to the outside internet.
+During testing:
+Public Instance: Verified external internet access (ping + curl successful)
 ![Public Test](/Fundamentals/Images/pubtest.png)
 *Ping and -curl successfull*
 
-After all test passed I then moved on to testing connectivity with the private instance (issued a Ping command) which failed
+Private Instance: Initial pings failed — after investigation, found missing outbound ICMP rules in its Security Group.
 ![Ping Failed](/Fundamentals/Images/privateping.png)<br>
 *Communication with Private Instance Failed.*
 
-I began to troubleshoot why I was unable to ping 
--ACL's good (both allow all traffic)
--SG for public is good (I tested it) 
--Issue found in SG for private only 1 rule for SSH nothing else 
-I made the neccessary changes in the Private SG and began to test again
+After investigation, found missing outbound ICMP rules in its Security Group. Once corrected, both instances communicated successfully, confirming correct ACL, SG, and route configurations.
 ![New Private Security Group](/Fundamentals/Images/newprisg.png)
 *Edited Private Security Group*<br>
 
 Now the two public and private instances can communicate
 ![Successfull Pings](/Fundamentals/Images/Pub_Pri_success.png) <br>
 *Success*
+
+🚀 Next Steps
+* VPC Peering
+* VPC Monitoring with Flow Logs
+* Accessing S3 from VPC
+* VPC Endpoints
+  
 
 
 
