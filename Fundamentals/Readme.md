@@ -62,11 +62,45 @@ Now the two public and private instances can communicate
 ![Successfull Pings](/Fundamentals/Images/Pub_Pri_success.png) <br>
 *Success*
 
-🚀 Next Steps
-* VPC Peering
-* VPC Monitoring with Flow Logs
-* Accessing S3 from VPC
-* VPC Endpoints
+## 🚀 Part 3: VPC Peering and Monitoring with Flow Logs 
+
+### 🧩 Objectives
+- Setup VPC Peering Connection    
+- Monitor commnunication between VPC's using Flow Logs
+
+### 🔍 Key Takeaways
+* VPC Peering enables private network connectivity without public internet routing.
+
+* Flow Logs help visualize and troubleshoot network behavior between resources.
+
+* IAM roles and policies play a critical part in granting permissions for AWS services to communicate securely.
+    * Policies are the rules that determine what someone/something can or cannot do
+    * Roles are the policies and permissions bundled to give services the permissions needed to complete the neccessary tasks
+ 
+---
+
+## 🏗️ Step 1: Creating the Second VPC
+
+After building my first VPC in a previous lab, I wanted to take it further by connecting two separate networks privately using **VPC Peering**.
+
+I started by creating a **second VPC (`Test2`)** with a setup similar to my first one:
+- Subnet
+- Route Table
+- Network ACL
+- Security Group
+
+Then I launched an **EC2 instance** inside the public subnet using the same SG settings as the first VPC — because repetition is the best teacher 😄.
+
+✅ **Test:** Verified that the instance in `Test2` could reach the internet using simple commands:
+
+```bash
+ping 8.8.8.8
+curl https://example.com
+```
+ 
+
+
+
   
 
 
