@@ -110,8 +110,14 @@ After sending the request from Test1, I switched to Test2 and accepted the reque
 Once the connection became Active, I updated both route tables so each VPC knew how to reach the other’s CIDR block through the peering connection.
 
 ✅ Test: Connected to the instance in Test1 and successfully pinged the private IP of the instance in Test2.
+
 ![Accept Peering Request](/Fundamentals/Images/peeringrequest.png)
+
 *Accept Peering Request to continue*
+
+![Communication is a success](/Fundamentals/Images/T1_T2.png)
+
+*Test 1 pinging Test 2*
 
 
 
