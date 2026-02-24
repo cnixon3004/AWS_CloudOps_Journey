@@ -138,6 +138,32 @@ Destination: CloudWatch Log Group (TestLog)
   <img src="/Fundamentals/Images/NewFlowLog.png" alt="New Flow Log" width="45%" />
 </p>
 *New Log Group and Flow Log*
+Since there was no existing IAM role for Flow Logs, I created one manually:
+
+🧠 IAM Setup
+
+Create Policy
+
+Allowed:
+
+logs:CreateLogGroup
+
+logs:CreateLogStream
+
+logs:PutLogEvents
+
+Create Role
+
+Attached the new policy to a role for Flow Logs.
+
+Once the role was attached to the Flow Log, traffic to and from the Test1 VPC began streaming into CloudWatch.
+
+🔍 Step 4: Testing and Analyzing the Flow Logs
+
+To validate that everything worked, I pinged the Test2 instance from Test1 and analyzed the logs in CloudWatch Logs Insights.
+
+Using simple queries, I could see accepted/denied traffic between both private IPs — providing visibility into the network behavior.
+
 
 
 
