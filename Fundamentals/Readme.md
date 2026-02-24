@@ -119,6 +119,21 @@ Once the connection became Active, I updated both route tables so each VPC knew 
 
 *Test 1 pinging Test 2*
 
+📊 Step 3: Enabling VPC Flow Logs for Monitoring
+
+With both VPCs connected, I wanted to start monitoring traffic between them using Flow Logs.
+
+I went to CloudWatch → Logs → Log groups and created a log group named TestLog.
+
+Then, from the Test1 VPC, I created a new Flow Log:
+
+Filter: All traffic
+
+Aggregation interval: 1 minute
+
+Destination: CloudWatch Log Group (TestLog)
+
+
 
 
  
