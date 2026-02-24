@@ -18,7 +18,8 @@ Hands-on networking project built during my AWS SysOps (SOA-C03) certification s
     - VPC Security
     - Create a Private Subnet
 *   ### 🔍 Key Takeaways
-*  I set up route tables and associated them with the appropriate subnets to define traffic flow. Security Groups handled access at the instance level, while Network ACLs added subnet-level control.
+* Route Tables direct subnet traffic, while Security Groups and NACLs provide layered security.
+* Separation of resources (public vs private) lays the groundwork for scalability and security.
 
 ![VPC Resource Map](/Fundamentals/Images/Resource_Map.png)
  
@@ -30,11 +31,14 @@ Hands-on networking project built during my AWS SysOps (SOA-C03) certification s
 - Launch VPC Resources
 - Test VPC Connectivity
 
-### 🔍 Key Takeaways
-After setting up the network, I launched two t2.nano instances — one in the public subnet and one in the private subnet.
+Highlights
 
--The public instance acted as a bastion host, with SSH access controlled via key pair and Security Group rules.
--The private instance was reachable only through traffic originating from the public instance’s Security Group (SG chaining).
+Deployed two t2.nano instances — one public (bastion) and one private.
+
+Used SG chaining so the private instance only accepts traffic from the public instance.
+
+Troubleshot connectivity issues (missing ICMP rules) and confirmed successful internal communication.
+
 <p float="left">
   <img src="/Fundamentals/Images/privateinst.png" width="45%" />
   <img src="/Fundamentals/Images/pubinst.png" width="45%" />
@@ -67,17 +71,7 @@ Now the two public and private instances can communicate
 ### 🧩 Objectives
 - Setup VPC Peering Connection    
 - Monitor commnunication between VPC's using Flow Logs
-
-### 🔍 Key Takeaways
-* VPC Peering enables private network connectivity without public internet routing.
-
-* Flow Logs help visualize and troubleshoot network behavior between resources.
-
-* IAM roles and policies play a critical part in granting permissions for AWS services to communicate securely.
-    * Policies are the rules that determine what someone/something can or cannot do
-    * Roles are the policies and permissions bundled to give services the permissions needed to complete the neccessary tasks
- 
----
+ ---
 
 ## 🏗️ Step 1: Creating the Second VPC
 
@@ -152,6 +146,9 @@ logs:CreateLogStream
 
 logs:PutLogEvents
 
+![Flow Role](/Fundamentals/Images/NewPolicy.png)
+*Log Policy* 
+
 Create Role
 
 Attached the new policy to a role for Flow Logs.
@@ -164,6 +161,18 @@ To validate that everything worked, I pinged the Test2 instance from Test1 and a
 
 Using simple queries, I could see accepted/denied traffic between both private IPs — providing visibility into the network behavior.
 
+![VPC Insights](/Fundamentals/Images/loginsights.png)
+*Default query for Log Insights*
+
+🧠 What I Learned
+
+This lab reinforced how networking, IAM, and monitoring all tie together in AWS.
+Understanding these concepts helped me see how real-world architectures are built and observed — not just deployed.
+
+🚀 Next Steps
+- Accessing S3 from VPC
+- VPC Endpoints
+  
 
 
 
