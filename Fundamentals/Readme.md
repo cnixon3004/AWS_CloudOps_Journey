@@ -133,6 +133,11 @@ Aggregation interval: 1 minute
 
 Destination: CloudWatch Log Group (TestLog)
 
+<p align="center">
+  <img src="/Fundamentals/Images/logGroupCreate.png" alt="New Log Group" width="45%" />
+  <img src="/Fundamentals/Images/NewFlowLog.png" alt="New Flow Log" width="45%" />
+</p>
+*New Log Group and Flow Log*
 
 
 
