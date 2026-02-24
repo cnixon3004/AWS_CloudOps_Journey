@@ -97,6 +97,24 @@ Then I launched an **EC2 instance** inside the public subnet using the same SG s
 ping 8.8.8.8
 curl https://example.com
 ```
+![Test2 Successfull Communication](/Fundamentals/Images/pub2test.png)
+*Success*
+
+🔗 Step 2: Establishing the VPC Peering Connection
+
+Next, I created a VPC Peering Connection between Test1 and Test2:
+
+AWS Console → VPC → Peering Connections → Create Peering Connection
+
+After sending the request from Test1, I switched to Test2 and accepted the request.
+Once the connection became Active, I updated both route tables so each VPC knew how to reach the other’s CIDR block through the peering connection.
+
+✅ Test: Connected to the instance in Test1 and successfully pinged the private IP of the instance in Test2.
+![Accept Peering Request](/Fundamentals/Images/peeringrequest.png)
+*Accept Peering Request to continue*
+
+
+
  
 
 
