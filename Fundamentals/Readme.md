@@ -169,10 +169,136 @@ Using simple queries, I could see accepted/denied traffic between both private I
 This lab reinforced how networking, IAM, and monitoring all tie together in AWS.
 Understanding these concepts helped me see how real-world architectures are built and observed — not just deployed.
 
-🚀 Next Steps
-- Accessing S3 from VPC
-- VPC Endpoints
-  
+
+# 🚀 **Part 4: Connecting EC2 to S3 (Direct & via VPC Endpoint)**
+
+*(Final stage of the Nextwork Networking Lab – learning to securely connect private resources to AWS services)*
+
+---
+
+### 🧠 **Overview**
+
+With my VPC architecture and security layers complete, the next challenge was to connect an EC2 instance to **Amazon S3** — first *over the internet* using access keys, and then *privately* through a **VPC Endpoint**.
+
+This lab helped me understand not just *how* connectivity works, but *why* security and access design matter in cloud networking.
+
+---
+
+### ☁️ **Step 1: Accessing S3 Through the Internet**
+
+To start, I spun up my EC2 instance in the **Test1 VPC** and stripped the Security Group down to just one inbound rule — **SSH (port 22)** from anywhere.
+Once connected through **EC2 Instance Connect**, I tried listing all buckets:
+
+```bash
+aws s3 ls
+```
+
+🔴 *Result:* `Unable to locate credentials`
+
+That message reminded me that the CLI needs credentials, so I ran:
+
+```bash
+aws configure
+```
+
+The terminal prompted me for the **Access Key ID** and **Secret Access Key**.
+To create these, I went to:
+**IAM → Users → (Select user) → Security Credentials → Create access key**.
+
+After adding the new credentials in the terminal, I re-ran:
+
+```bash
+aws s3 ls
+```
+
+✅ *Result:* All buckets in that region listed successfully.
+
+To take it further, I created a new bucket and uploaded a test file directly from EC2:
+
+```bash
+aws s3 mb s3://nextwork-lab-bucket
+touch test.txt
+aws s3 cp test.txt s3://nextwork-lab-bucket
+```
+
+Then I verified everything:
+
+```bash
+aws s3 ls
+aws s3 ls s3://nextwork-lab-bucket
+```
+
+💡 *Seeing my test file show up in the console was a big win — it confirmed I could manage S3 directly from the command line.*
+
+---
+
+### 🖼️ **Recommended Screenshots**
+
+* IAM → Access Key creation screen
+* EC2 Instance Connect terminal showing `aws configure` prompts
+* Successful `aws s3 ls` output
+* Console view confirming uploaded file in S3 bucket
+
+![IAM Access Key](/Fundamentals/Images/iam-accesskey.png)
+![EC2 CLI Configure](/Fundamentals/Images/ec2-configure.png)
+![S3 Bucket List](/Fundamentals/Images/s3-list.png)
+![S3 Console Verification](/Fundamentals/Images/s3-console.png)
+
+---
+
+### 🔒 **Step 2: Connecting to S3 via VPC Endpoint**
+
+After verifying connectivity over the internet, I wanted to take a more secure approach — connecting privately through a **VPC Gateway Endpoint for S3**.
+
+I first deleted the test bucket and created a fresh one with several uploaded files for testing.
+Next, I navigated to:
+**VPC → Endpoints → Create Endpoint → Gateway → S3**
+
+Once the endpoint was active, I wrote a **bucket policy** to restrict access to traffic *only* coming from that specific endpoint.
+When I saved it, I got a few **Access Denied** messages — which actually made sense. The new policy was doing its job: blocking all traffic that wasn’t from the endpoint.
+
+To fix routing, I updated my **Route Table** for the subnet to include the new **VPC endpoint** as a target for S3 traffic.
+Then I tested again:
+
+```bash
+aws s3 ls
+```
+
+✅ *Result:* Success — this time, traffic stayed entirely within AWS’s private network instead of traversing the public internet.
+
+---
+
+### 🖼️ **Recommended Screenshots**
+
+* VPC → Endpoint creation (Gateway type, Service: com.amazonaws.us-east-1.s3)
+* Bucket policy JSON snippet showing VPC endpoint restriction
+* Route Table with endpoint target
+* Terminal showing successful S3 access via endpoint
+
+![VPC Endpoint Creation](/Fundamentals/Images/vpc-endpoint.png)
+![Bucket Policy](/Fundamentals/Images/bucket-policy.png)
+![Route Table Endpoint](/Fundamentals/Images/route-endpoint.png)
+![S3 Access via Endpoint](/Fundamentals/Images/s3-endpoint-access.png)
+
+---
+
+### 🧩 **Key Takeaways**
+
+* Using **Access Keys** works but exposes communication to the public internet — better suited for testing or learning.
+* **VPC Endpoints** enable private, secure communication between AWS resources and services without ever leaving the AWS network.
+* Understanding IAM roles and S3 bucket policies is crucial for secure design.
+* Hands-on troubleshooting (like fixing route tables or endpoint permissions) made these concepts *click* in a way that reading alone never could.
+
+---
+
+### 🧠 **Reflection**
+
+This lab wrapped up my AWS networking fundamentals on a high note.
+Each part built on the last — starting with subnet basics, moving through connectivity, monitoring, and now private service access.
+Seeing everything come together made the “why” behind AWS architecture start to make sense.
+
+Next up: Automating the entire environment with **AWS CloudFormation** 🚀
+
 
 
 
