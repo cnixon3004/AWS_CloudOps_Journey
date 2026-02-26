@@ -195,11 +195,14 @@ aws s3 ls
 
 🔴 *Result:* `Unable to locate credentials`
 
+
 That message reminded me that the CLI needs credentials, so I ran:
 
 ```bash
 aws configure
 ```
+![EC2 Configure](/Fundamentals/Images/configure.png)
+<br>*Unable to locate credentials/configure*
 
 The terminal prompted me for the **Access Key ID** and **Secret Access Key**.
 To create these, I went to:
@@ -212,39 +215,33 @@ aws s3 ls
 ```
 
 ✅ *Result:* All buckets in that region listed successfully.
+![AWS S3 LS Sucess](/Fundamentals/Images/listbuckets.png)
+<br>*Successful AWS S3 ls*
+
 
 To take it further, I created a new bucket and uploaded a test file directly from EC2:
 
 ```bash
-aws s3 mb s3://nextwork-lab-bucket
+aws s3 mb s3://coreystestbucket2026
 touch test.txt
-aws s3 cp test.txt s3://nextwork-lab-bucket
+aws s3 cp test.txt s3://coreystestbucket2026
 ```
 
 Then I verified everything:
 
 ```bash
 aws s3 ls
-aws s3 ls s3://nextwork-lab-bucket
+aws s3 ls s3://coreystestbucket2026
 ```
 
+<p align="center">
+  <img src="/Fundamentals/Images/emptyupload.png" alt="copy and upload to S3" width="45%" />
+  <img src="/Fundamentals/Images/newbucketinfo.png" alt="upload verification" width="45%" />
+</p>
 💡 *Seeing my test file show up in the console was a big win — it confirmed I could manage S3 directly from the command line.*
 
 ---
 
-### 🖼️ **Recommended Screenshots**
-
-* IAM → Access Key creation screen
-* EC2 Instance Connect terminal showing `aws configure` prompts
-* Successful `aws s3 ls` output
-* Console view confirming uploaded file in S3 bucket
-
-![IAM Access Key](/Fundamentals/Images/iam-accesskey.png)
-![EC2 CLI Configure](/Fundamentals/Images/ec2-configure.png)
-![S3 Bucket List](/Fundamentals/Images/s3-list.png)
-![S3 Console Verification](/Fundamentals/Images/s3-console.png)
-
----
 
 ### 🔒 **Step 2: Connecting to S3 via VPC Endpoint**
 
