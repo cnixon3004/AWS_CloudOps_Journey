@@ -250,34 +250,28 @@ After verifying connectivity over the internet, I wanted to take a more secure a
 I first deleted the test bucket and created a fresh one with several uploaded files for testing.
 Next, I navigated to:
 **VPC → Endpoints → Create Endpoint → Gateway → S3**
+![VPC Endpoint Creation](/Fundamentals/Images/endpointdetails.png)
+*VPC Endpoint Details*
 
 Once the endpoint was active, I wrote a **bucket policy** to restrict access to traffic *only* coming from that specific endpoint.
 When I saved it, I got a few **Access Denied** messages — which actually made sense. The new policy was doing its job: blocking all traffic that wasn’t from the endpoint.
+![Bucket Policy](/Fundamentals/Images/bucketPolicy.png)
+*New S3 bucket policy*
 
 To fix routing, I updated my **Route Table** for the subnet to include the new **VPC endpoint** as a target for S3 traffic.
+![Route Table Endpoint](/Fundamentals/Images/newrtbl.png)
+*New Route to endpoint added to Route Table*
+
 Then I tested again:
 
 ```bash
 aws s3 ls
 ```
-
+![S3 Access via Endpoint](/Fundamentals/Images/finalsuccess.png)
 ✅ *Result:* Success — this time, traffic stayed entirely within AWS’s private network instead of traversing the public internet.
 
 ---
 
-### 🖼️ **Recommended Screenshots**
-
-* VPC → Endpoint creation (Gateway type, Service: com.amazonaws.us-east-1.s3)
-* Bucket policy JSON snippet showing VPC endpoint restriction
-* Route Table with endpoint target
-* Terminal showing successful S3 access via endpoint
-
-![VPC Endpoint Creation](/Fundamentals/Images/vpc-endpoint.png)
-![Bucket Policy](/Fundamentals/Images/bucket-policy.png)
-![Route Table Endpoint](/Fundamentals/Images/route-endpoint.png)
-![S3 Access via Endpoint](/Fundamentals/Images/s3-endpoint-access.png)
-
----
 
 ### 🧩 **Key Takeaways**
 
@@ -294,7 +288,7 @@ This lab wrapped up my AWS networking fundamentals on a high note.
 Each part built on the last — starting with subnet basics, moving through connectivity, monitoring, and now private service access.
 Seeing everything come together made the “why” behind AWS architecture start to make sense.
 
-Next up: Automating the entire environment with **AWS CloudFormation** 🚀
+Next up: **Classic Three-Tier Architecture & Monitoring,Logging, and Remediation** 🚀
 
 
 
