@@ -17,6 +17,7 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
 🚀 Implementation Steps
 1. EC2 & CloudWatch Setup
      Began by creating and launching a t2.nano instance. Once the instance was up and running I navigated over to CloudWatch to verify that the default metrics weere being collected.
-                              Cloudwatch >> Metrics >> EC2 >> Per-Instance Metrics >> your_instance_ID
+
+                   Cloudwatch >> Metrics >> EC2 >> Per-Instance Metrics >> your_instance_ID
    
    
