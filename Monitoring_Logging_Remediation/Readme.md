@@ -29,6 +29,10 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
    Next I setup SNS by
       * Creating a SNS topic
       * Subsricbed an email endpoint for notification
+   <p float="left">
+    <img src="/Monitoring_Logging_Remediation/Screenshots/CW_SNS.png" width="45%" />
+    <img src="/Monitoring_Logging_Remediation/Screenshots/topic_confirmation.png" width="45%" />
+   </p> 
 
 Once the topic was created I then navigated back to CloudWatch and created an alarm that would trigger a notification if CPUUtilization went over 70% usage 
       
