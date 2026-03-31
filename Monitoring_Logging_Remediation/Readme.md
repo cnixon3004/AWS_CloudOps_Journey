@@ -22,4 +22,8 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
                    Cloudwatch >> Metrics >> EC2 >> Per-Instance Metrics >> your_instance_ID
     ![CPU Metrics](/Monitoring_Logging_Remediation/Screenshots/CW_cpumetrics.png)
    *CPU Utilization Instance Metrics*
+
+
+2. SNS Configuration & CloudWatch Alarm setup
+      
    
