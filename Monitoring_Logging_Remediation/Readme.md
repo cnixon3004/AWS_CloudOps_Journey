@@ -19,5 +19,5 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
      Began by creating and launching a t2.nano instance. Once the instance was up and running I navigated over to CloudWatch to verify that the default metrics weere being collected.
 
                    Cloudwatch >> Metrics >> EC2 >> Per-Instance Metrics >> your_instance_ID
-   
+    ![CPU Metrics](/Monitoring_Logging_Remediation/Screenshots/CW_cpumetrics.png)
    
