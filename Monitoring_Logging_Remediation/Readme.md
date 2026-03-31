@@ -36,5 +36,7 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
    *Create Topic & Topic Email confirmation*
 
 Once the topic was created I then navigated back to CloudWatch and created an alarm that would trigger a notification if CPUUtilization went over 70% usage 
+![CloudWatch Alarm Preview](/Monitoring_Logging_Remediation/Screenshots/CW_alarm_preview1.png)
+*CloudWatch Alarm Preview*
       
    
