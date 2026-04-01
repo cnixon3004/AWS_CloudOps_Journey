@@ -38,5 +38,26 @@ EC2 Instance → CloudWatch Metrics → CloudWatch Alarm → SNS → Email Notif
 Once the topic was created I then navigated back to CloudWatch and created an alarm that would trigger a notification if CPUUtilization went over 70% usage 
 ![CloudWatch Alarm Preview](/Monitoring_Logging_Remediation/Screenshots/CW_alarm_preview1.png)
 *CloudWatch Alarm Preview*
-      
+
+3. Testing
+
+   After all of that the only thing left to do was to test the instance/alarm in a stressed state
+   I did this by installing a stress tool and then enetering a command to potentially max out the cpu of the instance.
+   ![Stress Tool Installation](/Monitoring_Logging_Remediation/Screenshots/Stress_test.png)
+   *Stress Test Install*
+
+   ![Simulated Stress Load](/Monitoring_Logging_Remediation/Screenshots/Stress_load2.png)
+
+   *Simulated load on EC2 Instance*
+   
+   Once alarm crossed both datapoints a email notification was sent to the email attached to the notification
+      <p float="left">
+    <img src="/Monitoring_Logging_Remediation/Screenshots/alarm_email.png" width="45%" />
+    <img src="/Monitoring_Logging_Remediation/Screenshots/alarm_state.png" width="45%" />
+   </p> 
+  
+   *CloudWatch Alarm Email*
+
+   *Visualization of Alarm State*
+   
    
