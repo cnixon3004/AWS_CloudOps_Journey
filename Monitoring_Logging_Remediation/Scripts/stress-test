@@ -1,0 +1,4 @@
+sudo yum install -y stress
+ * Installs stress tool
+
+ 
